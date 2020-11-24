@@ -9,7 +9,7 @@ if a < 0 :
 else :
     while sum(lst) != N :
         L += 1
-        if L > 100 or a < 1:
+        if L > 100 or a < 0:
             lst = [-1]
             break
         a = ((N * 2 / L) + 1 - L ) // 2
