@@ -8,5 +8,5 @@ elif x1 == x2 == x3 or y1 == y2 == y3 :
 dist1 = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5 
 dist2 = ((x3 - x1) ** 2 + (y3 - y1) ** 2) ** 0.5 
 dist3 = ((x3 - x2) ** 2 + (y3 - y2) ** 2) ** 0.5 
-lst = [abs(dist2 - dist1), abs(dist3 - dist1), abs(dist3 - dist2)]
-print(max(lst) * 2)
+lst = [dist1, dist2, dist3]
+print("%.10f" %((max(lst) - min(lst)) * 2 + 0.0000000001))
