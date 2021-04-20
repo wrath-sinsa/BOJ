@@ -1,23 +1,29 @@
-X = int(input())
-ans_lst = [0] * (X+1)
-def cal(x) :
-    tmp3 = 0
-    tmp2 = 0
-    print(x)
-    if x == 1 : return 1
-    if ans_lst[x] == 0 :
-        if x % 3 == 0 : tmp3 = cal(x//3)
-        if x % 2 == 0 :
-            tmp2 = cal(x//2) 
-            if tmp3 != 0 :
-                if tmp2 > tmp3 : tmp2, tmp3 = tmp3, tmp2
-        tmp1 = cal(x-1)
-        if tmp2 != 0 :
-            if tmp2 < tmp1 : tmp1, tmp2 = tmp2, tmp1
-        if tmp3 != 0 :
-            if tmp3 < tmp1 : tmp1, tmp3 = tmp3, tmp1
-        ans_lst[x] = tmp1  
-        print(tmp1, tmp2, tmp3)
-    return ans_lst[x]
+import sys
+import heapq
+sys.setrecursionlimit(100000)
+input = sys.stdin.readline
+push = heapq.heappush
+pop = heapq.heappop
+# list(map(int,input().split()))
 
-print(cal(X))
+def dynamic(n) :
+    #print(DP, n)
+    if DP[n] != sys.maxsize : return DP[n]
+    a = sys.maxsize
+    b = sys.maxsize
+    if n % 3 == 0 :
+        a = dynamic(n//3) + 1
+    if n % 2 == 0 :
+        b = dynamic(n//2) + 1
+        
+    c = dynamic(n-1) + 1
+    DP[n] = min([a,b,c])
+    return DP[n]
+# __main__
+N = int(input())
+DP = [sys.maxsize] * (N+1) 
+DP[1] = 0
+print(dynamic(N))
+#print(DP)
+
+# 1, 1, 1, 2, 3, 2,
