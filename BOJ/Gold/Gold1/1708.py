@@ -20,7 +20,7 @@ for i in range (N) :
     tmp = list(map(int,input().split()))
     dot.append(tmp)
 dot.sort(key = lambda x:(-x[0], x[1]))
-print(dot)
+#print(dot)
 
 for i in range (1,N) :
     tdx = dot[i][0] - dot[0][0]
@@ -29,9 +29,9 @@ for i in range (1,N) :
     dot[i].append(theta)
 
 tmp = [dot[0]]
-dot = sorted(dot[1:], key = lambda x : (-x[2], x[1], -x[0]))
+dot = sorted(dot[1:], key = lambda x : (-x[2], -x[0], x[1]))
 dot = tmp + dot
-print(dot)
+#print(dot)
 
 st = deque()
 st.append(0)
